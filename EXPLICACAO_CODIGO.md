@@ -1,6 +1,6 @@
-# 📚 Explicação Detalhada do Código - Sistema de Otimização Linear
+# Explicação Detalhada do Código - Sistema de Otimização Linear
 
-## 📋 Visão Geral do Projeto
+## Visão Geral do Projeto
 
 Este projeto implementa um **Sistema de Otimização Linear** que resolve problemas de Programação Linear usando o **Método Simplex** através da biblioteca PuLP, com uma interface web interativa em Streamlit.
 
@@ -8,15 +8,15 @@ Este projeto implementa um **Sistema de Otimização Linear** que resolve proble
 
 ---
 
-# 🔧 ARQUIVO 1: solver.py
+# ARQUIVO 1: solver.py
 
 Este arquivo contém toda a lógica matemática e algorítmica do sistema.
 
 ---
 
-## 1️⃣ Função `criar_modelo_interno()`
+## 1. Função `criar_modelo_interno()`
 
-### 📝 Código Completo:
+### Código:
 
 ```python
 def criar_modelo_interno(num_vars, coef_objetivo, restricoes, variacoes=None):
@@ -50,11 +50,11 @@ def criar_modelo_interno(num_vars, coef_objetivo, restricoes, variacoes=None):
     return modelo, variaveis
 ```
 
-### 🎯 O que essa função faz?
+### O que essa função faz?
 
 Cria o modelo matemático de otimização linear que será resolvido.
 
-### 📖 Explicação Passo a Passo:
+### Explicação Passo a Passo:
 
 #### **Passo 1: Criar o Problema**
 ```python
@@ -124,9 +124,9 @@ return modelo, variaveis
 
 ---
 
-## 2️⃣ Função `encontrar_limite_disp()`
+## 2. Função `encontrar_limite_disp()`
 
-### 📝 Código Completo:
+### Código:
 
 ```python
 def encontrar_limite_disp(num_vars, coef_objetivo, restricoes, indice_restricao, preco_sombra_base, direcao):
@@ -183,11 +183,11 @@ def encontrar_limite_disp(num_vars, coef_objetivo, restricoes, indice_restricao,
     return abs(melhor_delta)
 ```
 
-### 🎯 O que essa função faz?
+### O que essa função faz?
 
 Encontra o **limite máximo de variação** de um recurso que mantém o preço-sombra válido.
 
-### 📖 Explicação Passo a Passo:
+### Explicação Passo a Passo:
 
 #### **Fase 1: Busca Exponencial (Encontrar região aproximada)**
 
@@ -298,7 +298,7 @@ return abs(melhor_delta)
 ```
 - Retorna o valor absoluto do melhor delta encontrado
 
-### 💡 Exemplo Prático:
+### Exemplo Prático:
 
 **Situação:**
 - Restrição: Horas de Máquina ≤ 100
@@ -314,9 +314,9 @@ return abs(melhor_delta)
 
 ---
 
-## 3️⃣ Função `calcular_viabilidade()`
+## 3. Função `calcular_viabilidade()`
 
-### 📝 Código Completo:
+### Código:
 
 ```python
 def calcular_viabilidade(num_vars, coef_objetivo, restricoes, resultado_base):
@@ -338,11 +338,11 @@ def calcular_viabilidade(num_vars, coef_objetivo, restricoes, resultado_base):
     return relatorio
 ```
 
-### 🎯 O que essa função faz?
+### O que essa função faz?
 
 Calcula os limites de viabilidade para **todas** as restrições do problema.
 
-### 📖 Explicação Passo a Passo:
+### Explicação Passo a Passo:
 
 ```python
 relatorio = {}
@@ -379,7 +379,7 @@ return relatorio
 ```
 - Retorna o relatório completo
 
-### 💡 Exemplo de Saída:
+### Exemplo de Saída:
 
 ```python
 {
@@ -402,9 +402,9 @@ return relatorio
 
 ---
 
-## 4️⃣ Função `base_solver_tableau()` ⭐ FUNÇÃO PRINCIPAL
+## 4. Função `base_solver_tableau()` ⭐ FUNÇÃO PRINCIPAL
 
-### 📝 Código Completo:
+### Código:
 
 ```python
 def base_solver_tableau(num_vars, coef_objetivo, restricoes):
@@ -431,11 +431,11 @@ def base_solver_tableau(num_vars, coef_objetivo, restricoes):
     return resultado
 ```
 
-### 🎯 O que essa função faz?
+### O que essa função faz?
 
 É a **função principal** que orquestra todo o processo de otimização e retorna todos os resultados.
 
-### 📖 Explicação Passo a Passo:
+### Explicação Passo a Passo:
 
 #### **Passo 1: Criar e Resolver o Modelo**
 ```python
@@ -499,7 +499,7 @@ return resultado
 ```
 - Retorna o dicionário completo com todos os resultados
 
-### 💡 Exemplo de Retorno Completo:
+### Exemplo de Retorno Completo:
 
 ```python
 {
@@ -536,13 +536,13 @@ return resultado
 
 ---
 
-# 🎨 ARQUIVO 2: app.py
+# ARQUIVO 2: app.py
 
 Este arquivo contém a interface web usando Streamlit.
 
 ---
 
-## 🏗️ Estrutura Geral
+## Estrutura Geral
 
 ### 1. Configuração da Página
 
@@ -591,7 +591,7 @@ st.markdown("""
 
 ---
 
-## 📊 Seção 1: Sidebar - Configurações
+## Seção 1: Sidebar - Configurações
 
 ```python
 with st.sidebar:
@@ -617,7 +617,7 @@ with st.sidebar:
 
 ---
 
-## 📝 Seção 2: Entrada da Função Objetivo
+## Seção 2: Entrada da Função Objetivo
 
 ```python
 col_obj, col_rest = st.columns([1, 2])
@@ -651,7 +651,7 @@ with col_obj:
 
 ---
 
-## 🔒 Seção 3: Entrada das Restrições
+## Seção 3: Entrada das Restrições
 
 ```python
 inputs_restricoes = []
@@ -706,7 +706,7 @@ with col_rest:
 
 ---
 
-## 🔄 Seção 4: Gerenciamento de Estado
+## Seção 4: Gerenciamento de Estado
 
 ```python
 if 'resultado_otimo' not in st.session_state:
@@ -722,7 +722,7 @@ if 'resultado_otimo' not in st.session_state:
 
 ---
 
-## 🚀 Seção 5: Botão de Cálculo
+## Seção 5: Botão de Cálculo
 
 ```python
 if st.button("Calcular ponto ótimo"):
@@ -740,7 +740,7 @@ if st.button("Calcular ponto ótimo"):
 
 ---
 
-## 📈 Seção 6: Exibição de Resultados
+## Seção 6: Exibição de Resultados
 
 ### 6.1 Verificar se há resultado
 
@@ -814,7 +814,7 @@ if st.session_state.resultado_otimo is not None:
 
 ---
 
-## 📊 Seção 7: Tabela de Viabilidade
+## Seção 7: Tabela de Viabilidade
 
 ```python
         if resultado.get('viabilidade'):
@@ -891,7 +891,7 @@ if st.session_state.resultado_otimo is not None:
 
 ---
 
-## 🔬 Seção 8: Análise de Variações (Parte mais importante!)
+## Seção 8: Análise de Variações (Parte mais importante!)
 
 ### 8.1 Inputs de Variações
 
@@ -1061,7 +1061,7 @@ $ 1,550.00 = 1,500.00 + (50.00)
 
 ---
 
-## 🎓 Conceitos-Chave para Apresentação
+## Conceitos-Chave para Apresentação
 
 ### 1. **Programação Linear**
 - Otimização de função objetivo linear
@@ -1091,7 +1091,7 @@ $ 1,550.00 = 1,500.00 + (50.00)
 
 ---
 
-## 🚀 Como Executar o Projeto
+## Como Executar o Projeto
 
 ### 1. Instalar Dependências
 ```bash
@@ -1109,7 +1109,7 @@ streamlit run app.py
 
 ---
 
-## 📝 Exemplo Completo de Uso
+## Exemplo de Uso
 
 ### Problema:
 **Uma fábrica produz dois produtos:**
@@ -1149,9 +1149,7 @@ streamlit run app.py
 
 ---
 
-## 🎯 Dicas para Apresentação
-
-### O que destacar:
+## Summary
 
 1. **Arquitetura modular**
    - Solver separado da interface
@@ -1170,7 +1168,7 @@ streamlit run app.py
    - Análise de investimentos
    - Precificação de recursos
 
-### Pontos técnicos fortes:
+### Pontos técnicos:
 
 - ✅ Uso correto de bibliotecas especializadas (PuLP)
 - ✅ Análise de sensibilidade automática
@@ -1180,7 +1178,7 @@ streamlit run app.py
 
 ---
 
-## 📚 Referências Úteis
+## Referências Úteis
 
 - **PuLP Documentation:** https://coin-or.github.io/pulp/
 - **Streamlit Docs:** https://docs.streamlit.io/
@@ -1188,4 +1186,3 @@ streamlit run app.py
 
 ---
 
-**Boa apresentação! 🎉**
