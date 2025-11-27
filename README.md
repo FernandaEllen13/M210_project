@@ -4,7 +4,7 @@ Sistema de otimização linear com interface web para resolver problemas de prog
 
 ## Sobre o Projeto
 
-Este projeto implementa um solver completo de otimização linear que resolve problemas de maximização, calcula preços-sombra, realiza análise de sensibilidade e permite simulação interativa de variações nos recursos através de uma interface web moderna.
+Este projeto implementa um solver completo de otimização linear que resolve problemas de maximização, calcula preços-sombra, realiza análise de viabilidade e permite simulação interativa de variações nos recursos através de uma interface web.
 
 ## Como Executar
 
@@ -38,7 +38,7 @@ M210_project/
 ├── app.py                  # Interface web (Streamlit)
 ├── solver.py              # Motor de otimização (PuLP)
 ├── requirements.txt       # Dependências
-├── EXPLICACAO_CODIGO.md  # Documentação técnica detalhada
+├── EXPLICACAO_CODIGO.md  # Documentação técnica
 └── README.md             # Este arquivo
 ```
 
@@ -126,7 +126,3 @@ Uma fábrica produz 2 produtos (A e B):
 - Busca Exponencial para encontrar região de mudança
 - Busca Binária para refinar limites com precisão
 - Solver CBC para implementação eficiente do Simplex
-
-## Licença
-
-MIT License
