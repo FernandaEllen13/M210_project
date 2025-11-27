@@ -49,7 +49,7 @@ M210_project/
 Contém a lógica de otimização:
 - `criar_modelo_interno()` - Cria o modelo de programação linear
 - `encontrar_limite_disp()` - Busca exponencial e binária para encontrar limites
-- `calcular_viabilidade()` - Análise de sensibilidade
+- `calcular_viabilidade()` - Análise de viabilidade
 - `base_solver_tableau()` - Função principal
 
 **app.py**
@@ -117,7 +117,7 @@ Uma fábrica produz 2 produtos (A e B):
 - Otimização de função objetivo linear sujeita a restrições lineares
 - Método Simplex implementado via biblioteca PuLP
 
-**Análise de Sensibilidade**
+**Análise de Viabilidade**
 - Preços-Sombra: valor marginal de cada recurso
 - Intervalos de Viabilidade: limites onde a solução básica permanece ótima
 - Análise de Variações: impacto de mudanças nos recursos
