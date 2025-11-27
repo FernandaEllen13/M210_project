@@ -127,16 +127,3 @@ def base_solver_tableau(num_vars, coef_objetivo, restricoes):
             
     return resultado
 
-def testar_cenario_real(num_vars, coef_objetivo, restricoes, dicionario_deltas):
-    modelo_novo, _ = criar_modelo_interno(num_vars, coef_objetivo, restricoes, dicionario_deltas)
-    
-    modelo_novo.solve(pulp.PULP_CBC_CMD(msg=False))
-    
-    lucro_novo = pulp.value(modelo_novo.objective)
-    status_novo = pulp.LpStatus[modelo_novo.status]
-    
-    return {
-        "viavel": (status_novo == 'Optimal'),
-        "lucro_real": lucro_novo,
-        "status_solver": status_novo
-    }
